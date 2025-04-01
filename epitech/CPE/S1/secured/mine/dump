@@ -1,0 +1,21 @@
+int main(void)
+{
+    hashtable_t *ht = new_hashtable(&hash, 5);
+
+    ht_insert(ht, "", "z");
+    ht_insert(ht, "g", "g");
+    ht_insert(ht, "a", "a");
+    // ht_insert(ht, "Kratos", "Kratos");
+    // ht_insert(ht, "Visioe", "Visioe");
+    // ht_insert(ht, "Visiee", "Visiee");
+    // ht_insert(ht, "Visier", "Visier");
+    // ht_insert(ht, "Visief", "Visief");
+    // ht_insert(ht, "Visieqq", "Visieqq");
+    // ht_insert(ht, "Viemp", "Viemp");
+    // ht_insert(ht, "Visia", "Visia");
+    ht_dump(ht);
+    free(ht);
+    return 0;
+}
+
+@gcc -o $(NAME) -g -L. -lhashtable

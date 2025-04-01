@@ -1,0 +1,158 @@
+/* Styles généraux restent inchangés */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #EFF3F5;
+    margin: 0;
+}
+
+a {
+    color: #284E7B;
+    text-decoration: none;
+}
+
+
+/* Styles pour la page d'accueil */
+
+.header {
+    background-color: #284E7B;
+    color: #FFFFFF;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.header nav ul li a {
+    color: #ADD4F3;
+    font-weight: bold;
+}
+
+.home-button {
+    font-size: 24px;
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: #284E7B;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid #ADD4F3;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.home-button:hover {
+    background-color: #ADD4F3;
+    color: #284E7B;
+}
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #659ABD;
+    color: #FFFFFF;
+    padding: 100px 20px;
+    text-align: left;
+}
+
+.hero-content {
+    max-width: 50%;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+.hero .btn {
+    background-color: #ADD4F3;
+    border: none;
+    color: #284E7B;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.hero .btn:hover {
+    background-color: #284E7B;
+    color: #ADD4F3;
+}
+
+.hero-image img {
+    max-width: 60%;
+    height: auto;
+}
+
+.featured-products {
+    background-color: #EFF3F5;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.featured-products h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #284E7B;
+}
+
+.product-grid {
+    display: flex;
+    justify-content: space-around;
+}
+
+.product-item {
+    background-color: #FFFFFF;
+    border: 1px solid #8F908D;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 200px;
+    text-align: center;
+}
+
+.product-item img {
+    max-width: 100%;
+    height: auto;
+    border-bottom: 1px solid #8F908D;
+    margin-bottom: 20px;
+}
+
+.product-item h3 {
+    font-size: 18px;
+    color: #284E7B;
+    margin-bottom: 10px;
+}
+
+.product-item .price {
+    font-size: 16px;
+    color: #8F908D;
+}
+
+.product-item .out-of-stock {
+    font-size: 16px;
+    color: #8F908D;
+}
+
+footer {
+    background-color: #8F908D;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    width: 100%;
+}

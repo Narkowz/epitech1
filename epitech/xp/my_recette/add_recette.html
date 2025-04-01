@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon site de recettes</title>
+    <link rel="stylesheet" href="contact_style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Mes recettes préférées</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html">Accueil</a></li>
+                <li><a href="recettes.html">Recettes</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="add_recette.html">Ajouter une recette</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content">
+        <section class="contact-form">
+            <h2>Ajouter une recette</h2>
+            <form action="form.php" method="post" enctype="multipart/form-data">
+                <label for="name">Nom:</label>
+                <input type="text" id="name" name="name">
+
+                <label for="ingredients">Ingrédients:</label>
+                <!-- <input type="text" id="ingredients" name="ingredients" > -->
+                <textarea id="ingredients" name="ingredients" rows="5"></textarea>
+
+                <label for="prepa">Méthode de préparation:</label>
+                <textarea id="prepa" name="prepa" rows="5"></textarea>
+                <!-- <input type="text" id="prepa" name="prepa" > -->
+
+                <label for="image">Image:</label>
+                <input type="file" id="image" name="image" accept="image/*">
+
+                <button type="submit">Envoyer</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mon Livre de Recettes</p>
+    </footer>
+</body>
+
+</html>

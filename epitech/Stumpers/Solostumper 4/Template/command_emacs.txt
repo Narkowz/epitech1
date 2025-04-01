@@ -1,0 +1,5 @@
+C-space to select
+C-w to cut
+C-y to paste
+C-_ to undo
+Alt-w to copy

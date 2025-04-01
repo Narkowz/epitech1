@@ -1,0 +1,40 @@
+
+[801]
+NAME="Basic and"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la && ls'
+[801-END]
+
+[802]
+NAME="Worng and"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la ajkssj && ls'
+[802-END]
+
+[803]
+NAME="Basic or"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la || ls'
+[803-END]
+
+[804]
+NAME="Worng or"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la ajkssj || ls'
+[804-END]
+
+[805]
+NAME="Good or"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la ||  ls sjaklsj'
+[805-END]

@@ -1,0 +1,8 @@
+./a.out:1: MAJOR:C-O1
+./pointers.c:51: MAJOR:C-C1
+./pointers.c:52: MAJOR:C-C1
+./pointers.c:61: MAJOR:C-F4
+./pointers.c:77: MINOR:C-L6
+./pointers.c~:1: MAJOR:C-O1
+./vgcore.11940:1: MAJOR:C-O1
+./vgcore.12100:1: MAJOR:C-O1

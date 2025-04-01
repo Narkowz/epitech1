@@ -1,0 +1,9 @@
+.vscode
+newf*
+coding-style-reports.log
+segfault.c
+a.out
+*libmy.a
+*.o
+mysh
+tester

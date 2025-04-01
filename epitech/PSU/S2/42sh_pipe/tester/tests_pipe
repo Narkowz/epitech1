@@ -1,0 +1,76 @@
+[401]
+NAME="Testing simple pipe"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo "ls -l /etc | grep sh"
+[401-END]
+
+[402]
+NAME="A pipe with a builtin ?"
+SETUP="export VAR1=VALEUR1 ; OLDPATH=$PATH ; PATH='/random'"
+CLEAN="PATH=$OLDPATH"
+TESTS=
+  echo 'unsetenv HOSTTYPE'
+  echo 'unsetenv VENDOR'
+  echo 'unsetenv OSTYPE'
+  echo 'unsetenv MACHTYPE'
+  echo 'unsetenv SHLVL'
+  echo 'unsetenv PWD'
+  echo 'unsetenv LOGNAME'
+  echo 'unsetenv USER'
+  echo 'unsetenv GROUP'
+  echo 'unsetenv HOST'
+  echo 'unsetenv REMOTEHOST'
+  echo 'unsetenv NLSPATH'
+  echo 'unsetenv _'
+  echo 'unsetenv LS_COLORS'
+  echo 'unsetenv NOTE'
+  echo 'setenv titi'
+  echo 'setenv | /bin/grep VAR1'
+  echo '/bin/ls | cd /usr'
+  echo 'ls -l'
+  echo 'exit 45|cat /etc/resolv.conf'
+[402-END]
+
+[403]
+NAME="Invalid null pipe"
+SETUP="export VAR1=VALEUR1 ; OLDPATH=$PATH ; PATH='/random'"
+CLEAN="PATH=$OLDPATH"
+TESTS=
+  echo "|"
+  echo " | "
+  echo "ls | | wc"
+[403-END]
+
+[404]
+NAME="2 function with ; spaced"
+SETUP="export VAR1=VALEUR1 ; OLDPATH=$PATH ; PATH='/random'"
+CLEAN="PATH=$OLDPATH"
+TESTS=
+  echo 'pwd ; ls'
+[404-END]
+
+[405]
+NAME="2 function with ; half spaced"
+SETUP="export VAR1=VALEUR1 ; OLDPATH=$PATH ; PATH='/random'"
+CLEAN="PATH=$OLDPATH"
+TESTS=
+  echo 'pwd ;ls'
+[405-END]
+
+[406]
+NAME="2 function with ; other_half_spaced"
+SETUP="export VAR1=VALEUR1 ; OLDPATH=$PATH ; PATH='/random'"
+CLEAN="PATH=$OLDPATH"
+TESTS=
+  echo 'pwd; ls'
+[406-END]
+
+[407]
+NAME="2 function with ; not spaced"
+SETUP="export VAR1=VALEUR1 ; OLDPATH=$PATH ; PATH='/random'"
+CLEAN="PATH=$OLDPATH"
+TESTS=
+  echo 'pwd;ls'
+[407-END]

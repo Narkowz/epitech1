@@ -1,0 +1,163 @@
+
+[501]
+NAME="Basic parenthesis"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la; (ls)'
+[501-END]
+
+[502]
+NAME="ERROR parenthesis"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la (ls)'
+[502-END]
+
+[503]
+NAME="ERROR missmatched  parenthesis"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la ;)(ls)'
+[503-END]
+
+[504]
+NAME="ERROR missmatched  parenthesis2"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la ;)((ls)'
+[504-END]
+
+[505]
+NAME="ERROR missmatched  parenthesis3"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la; (ls'
+[505-END]
+
+[507]
+NAME="Paenthesis redirection"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo '(ls -la; ls) > file'
+  echo 'cat file'
+  echo 'rm file'
+[507-END]
+
+[506]
+NAME="Paenthesis into par"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo '(ls -la; ls; (pwd; ls))'
+[506-END]
+
+[508]
+NAME="3 element in par"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo '(ls -la; ls ;pwd)'
+[508-END]
+
+[509]
+NAME="5 element in par"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo '(ls -la; ls ;pwd; cd ..; ls)'
+[509-END]
+
+[510]
+NAME="10 element in par"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo '(ls -la; ls ;pwd; cd ..; ls; ls; ls -la; pwd; cd ..; ls; cd; ls)'
+[510-END]
+
+[511]
+NAME="10 element into redir par"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo '(ls -la; ls ;pwd; cd ..; ls; ls; ls -la; pwd; cd ..; ls; cd; ls)>test'
+  echo 'cat test'
+  echo 'rm test'                                                                                                                                                                                                                                                        &                                                                 ²&&²²&&&²&²²²²²²²²²²²²²²²²²²²&  &&                                                                                                                                                        
+[511-END]
+
+
+[512]
+NAME="1 element in par redirection"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo '(ls -la) >test'
+  echo 'cat test'
+  ehco 'rm test'
+[512-END]
+
+[513]
+NAME="1 element in par wrong redirection"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo '(ls -la) >'
+  echo 'cat idiot'
+[513-END]
+
+[514]
+NAME="Redirect the whole par"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo '(ls -la; pwd; pwd; ls -a)>test'
+  echo 'cat test'
+  echo 'rm test'
+[514-END]
+
+[515]
+NAME="Redirection in par and at the end"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo '(ls -la>result1; pwd; pwd; ls -a)>test'
+  echo 'cat test'
+  echo 'cat result1'
+  echo 'rm test result1'
+[515-END]
+
+[516]
+NAME="Pipe in par and redirection"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo '(ls -la>result1; pwd | wc | wc)>test'
+  echo 'cat test'
+  echo 'cat result1'
+  echo 'rm test result1'
+[516-END]
+
+[517]
+NAME="Pipe in par and redirection and input"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo '(ls -la>result1; wc <Makefile | wc)>test'
+  echo 'cat test'
+  echo 'cat result1'
+  echo 'rm test result1'
+[517-END]
+
+[518]
+NAME="Pipe parenthesis"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo '(ls -la) | (wc)'
+[518-END]

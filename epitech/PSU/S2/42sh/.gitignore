@@ -1,0 +1,12 @@
+.vscode
+coding-style*
+vgcore*
+*.o
+*.a
+42sh
+bootstrap42/
+LLParser/
+a.out
+notc
+test.c
+file

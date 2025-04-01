@@ -1,0 +1,1 @@
+@font-face { font-family: 'PWHappyChristmas'; src: url('/fonts/PWHappyChristmas.ttf') format('truetype'); font-weight: normal; font-style: normal; } .font-happy-christmas { font-family: 'PWHappyChristmas', sans-serif; } .scale-up { transform: scale(1.7); transition: transform 0.2s; }

@@ -1,0 +1,21 @@
+/*
+** EPITECH PROJECT, 2023
+** my_show_word_array.c
+** File description:
+** show word
+*/
+
+#include "include/my.h"
+
+int my_show_word_array(char * const *tab)
+{
+    int i = 0;
+    int len = my_strlen(tab);
+
+    if (tab[i] == 0)
+        return (0);
+    while (tab[i] != '\0') {
+        my_putstr(tab);
+        i++;
+    }
+}

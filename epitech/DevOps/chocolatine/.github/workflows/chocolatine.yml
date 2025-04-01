@@ -1,0 +1,98 @@
+name: chocolatine
+on:
+  push:
+    branches-ignore:
+      - "ga-ignore-"
+  pull_request:
+    branches-ignore:
+      - "ga-ignore-"
+env:
+  EXECUTABLES: "test"
+  MIRROR_URL: "git@github.com:EpitechPromo2028/B-DOP-200-STG-2-1-chocolatine-attilio.jaeger.git"
+jobs:
+  check_coding_style:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/epitech/coding-style-checker:latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run coding style checker
+        run: check.sh . /tmp
+
+      - name: Display coding style errors
+        run: |
+          input="/tmp/coding-style-reports.log"
+          while read -r line; do
+            IFS=':' read -r file line_num error_title error_message <<< "$line"
+            echo "::error title=$error_title coding style error,file=$file,line=$line_num::$error_message"
+          done < "$input"
+  
+  check_program_compilation:
+    runs-on: ubuntu-latest
+    needs: check_coding_style
+    container:
+      image: epitechcontent/epitest-docker
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Launch make
+        run: make
+        timeout-minutes: 2
+
+      - name: Clean up
+        run: make clean
+
+      - name: Verify executables
+        run: |
+          for executable in $EXECUTABLES; do
+            if [ ! -x "$executable" ]; then
+              echo "Executable $executable is missing or not executable"
+              exit 1
+            fi
+          done
+
+  run_tests:
+    runs-on: ubuntu-latest
+    needs: check_program_compilation
+    container:
+      image: epitechcontent/epitest-docker
+
+    steps:
+      - name: Chekout code
+        uses: actions/checkout@v4
+
+      - name: Launch make run
+        run: make tests_run
+        timeout-minutes: 2
+on:
+  push:
+    branches-ignore:
+      - "ga-ignore-"
+jobs:
+  push_to_mirror:
+    runs-on: ubuntu-latest
+    needs: run_tests
+    on:
+      push:
+        branches-ignore:
+          - "ga-ignore-"
+    container:
+      image: epitechcontent/epitest-docker
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Mirror repository to Epitech
+      uses: pixta-dev/repository-mirroring-action@v1
+      with:
+        target_repo_url: $MIRROR_URL
+        ssh_private_key: ${{ secrets.GIT_SSH_PRIVATE_KEY }}
+
+    

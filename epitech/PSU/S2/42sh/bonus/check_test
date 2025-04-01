@@ -1,0 +1,40 @@
+#!/usr/bin/env python3
+##
+## EPITECH PROJECT, 2023
+## B-PSU-200-STG-2-1-42sh-titouan.pradoura
+## File description:
+## check_test.py
+##
+
+import fileinput
+
+RESET = "\033[0m"
+BOLD = "\033[1m"
+CYAN = "\033[36m"
+GREEN = "\033[32m"
+BLUE = "\033[34m"
+YELLOW = "\033[33m"
+RED = "\033[31m"
+WHITE = "\033[00m"
+BLACK = "\033[30m"
+LIGHT_GRAY = "\033[37m"
+DEFAULT = "\033[0m"
+
+def main():
+    nb_test = 0
+    list_failed = []
+
+    for line in fileinput.input():
+        nb_test += 1
+        if "KO" in line:
+            list_failed.append(line)
+    print("________Test_Ended________")
+    print(f"  Passed :{GREEN}{nb_test - len(list_failed)}{RESET} | ", end="")
+    print(f"Failed :{RED}{len(list_failed)}{RESET}")
+    if (len(list_failed) > 0):
+        for line in list_failed:
+            print(line, end="")
+
+
+if __name__ == "__main__":
+    main()

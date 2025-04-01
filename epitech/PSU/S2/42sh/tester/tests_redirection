@@ -1,0 +1,244 @@
+[301]
+NAME="ls redirection in file half spaced"
+SETUP="export VAR1=VALEUR1 ; OLDPATH=$PATH ; PATH='/usr/bin'"
+CLEAN="PATH=$OLDPATH"
+TESTS=
+  echo "ls >file"
+  echo "cat file"
+  echo "rm file"
+[301-END]
+
+[302]
+NAME="ls redirection in file spaced"
+SETUP="export VAR1=VALEUR1 ; OLDPATH=$PATH ; PATH='/usr/bin'"
+CLEAN="PATH=$OLDPATH"
+TESTS=
+  echo "ls > file"
+  echo "cat file"
+  echo "rm file"
+[302-END]
+
+[303]
+NAME="ls redirection in file other spaced"
+SETUP="export VAR1=VALEUR1 ; OLDPATH=$PATH ; PATH='/usr/bin'"
+CLEAN="PATH=$OLDPATH"
+TESTS=
+  echo "ls> file"
+  echo "cat file"
+  echo "rm file"
+[303-END]
+
+[304]
+NAME="ls redirection in file no space"
+SETUP="export VAR1=VALEUR1 ; OLDPATH=$PATH ; PATH='/usr/bin'"
+CLEAN="PATH=$OLDPATH"
+TESTS=
+  echo "ls>file"
+  echo "cat file"
+  echo "rm file"
+[304-END]
+
+[305]
+NAME="env redirection in file no space"
+SETUP="export VAR1=VALEUR1 ; OLDPATH=$PATH ; PATH='/usr/bin'"
+CLEAN="PATH=$OLDPATH"
+TESTS=
+    echo 'unsetenv HOSTTYPE'
+  echo 'unsetenv VENDOR'
+  echo 'unsetenv OSTYPE'
+  echo 'unsetenv MACHTYPE'
+  echo 'unsetenv SHLVL'
+  echo 'unsetenv PWD'
+  echo 'unsetenv LOGNAME'
+  echo 'unsetenv USER'
+  echo 'unsetenv GROUP'
+  echo 'unsetenv HOST'
+  echo 'unsetenv REMOTEHOST'
+  echo 'unsetenv NLSPATH'
+  echo 'unsetenv _'
+  echo 'unsetenv LS_COLORS'
+  echo 'unsetenv NOTE'
+  echo 'setenv titi'
+  echo "env>file"
+  echo "cat file"
+  echo "rm file"
+[305-END]
+
+[306]
+NAME="ls double redirection in file half spaced"
+SETUP="export VAR1=VALEUR1 ; OLDPATH=$PATH ; PATH='/usr/bin'"
+CLEAN="PATH=$OLDPATH"
+TESTS=
+  echo "ls >file"
+  echo "ls >>file"
+  echo "cat file"
+  echo "rm file"
+[306-END]
+
+[307]
+NAME="ls double redirection in file spaced"
+SETUP="export VAR1=VALEUR1 ; OLDPATH=$PATH ; PATH='/usr/bin'"
+CLEAN="PATH=$OLDPATH"
+TESTS=
+  echo "ls >file"
+  echo "ls >> file"
+  echo "cat file"
+  echo "rm file"
+[307-END]
+
+[308]
+NAME="ls double redirection in file other spaced"
+SETUP="export VAR1=VALEUR1 ; OLDPATH=$PATH ; PATH='/usr/bin'"
+CLEAN="PATH=$OLDPATH"
+TESTS=
+  echo "ls >file"
+  echo "ls>> file"
+  echo "cat file"
+  echo "rm file"
+[308-END]
+
+[309]
+NAME="ls double redirection in file no space"
+SETUP="export VAR1=VALEUR1 ; OLDPATH=$PATH ; PATH='/usr/bin'"
+CLEAN="PATH=$OLDPATH"
+TESTS=
+  echo "ls >file"
+  echo "ls>>file"
+  echo "cat file"
+  echo "rm file"
+[309-END]
+
+[310]
+NAME="env double redirection in file no space"
+SETUP="export VAR1=VALEUR1 ; OLDPATH=$PATH ; PATH='/usr/bin'"
+CLEAN="PATH=$OLDPATH"
+TESTS=
+  echo "ls >file"
+  echo "env>>file"
+  echo "cat file"
+  echo "rm file"
+[310-END]
+
+[311]
+NAME="Basic redirection"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la > test'
+  echo 'cat test'
+  echo 'rm test'
+[311-END]
+
+[312]
+NAME="Basic input"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la > test'
+  echo 'wc < test'
+  echo 'rm test'
+[312-END]
+
+[313]
+NAME="Invalid input"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'wc < '
+[313-END]
+
+[314]
+NAME="Invalid input fd not existing"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'wc < invalid'
+[314-END]
+
+[315]
+NAME="Input and redir"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'wc < invalid > test'
+  echo 'cat test'
+  echo 'rm test'
+[315-END]
+
+[316]
+NAME="Input and redir"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls >result'
+  echo 'wc >test <result'
+  echo 'cat test'
+  echo 'rm test'
+[316-END]
+
+[317]
+NAME="Input and redir3"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls >result'
+  echo 'wc <result>test'
+  echo 'cat test'
+  echo 'rm result test'
+[317-END]
+
+[318]
+NAME="Basic double redirection"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'wc << EOF'
+  echo 'hajksajshajkjsh'
+  echo 'EOF'
+[318-END]
+
+[319]
+NAME="Redirection after pipe"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la | cat -e | cat -e > result'
+  echo 'cat result'
+  echo 'rm result'
+[319-END]
+
+[320]
+NAME="Ambigous in  pipe"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la | cat -e <Makefile | cat -e > result'
+  echo 'cat result'
+  echo 'rm result'
+[320-END]
+
+[321]
+NAME="Many multi pipe"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la |wc | cat -e; ls -la | wc |wc|cat -e'
+[321-END]
+
+[322]
+NAME="Many multi pipe with redir"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la |wc | cat -e > result; ls -la | wc |wc|cat -e >result2'
+  echo 'cat result; cat result2'
+  echo 'rm result result2'
+[322-END]
+
+[323]
+NAME="double_redirection"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'cat -e > file > file'
+[323-END]

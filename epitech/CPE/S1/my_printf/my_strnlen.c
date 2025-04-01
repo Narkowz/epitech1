@@ -1,0 +1,26 @@
+/*
+** EPITECH PROJECT, 2023
+** my_strnlen.c
+** File description:
+** str n len
+*/
+
+int my_strnlen(char const *str, int n)
+{
+    int i = 0;
+
+    while (str[i] != '\0' && i < n)
+        i++;
+    return (i);
+}
+
+int main(void)
+{
+    int nb = 11;
+    char str[12] = "bonjour oui";
+    int len;
+
+    len = my_strnlen(&str, nb);
+    my_put_nbr(len);
+    return 0;
+}

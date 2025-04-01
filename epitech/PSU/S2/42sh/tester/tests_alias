@@ -1,0 +1,37 @@
+
+[701]
+NAME="adding alias"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'alias ls pwd'
+  echo 'ls'
+[701-END]
+
+[702]
+NAME="adding bigger alias"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'alias ls "pwd; ls -la"'
+  echo 'ls'
+[702-END]
+
+[703]
+NAME="display alias"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'alias ls "pwd; ls -la"'
+  echo 'alias ls'
+[703-END]
+
+[704]
+NAME="list alias"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'alias ls "pwd; ls -la"'
+  echo 'alias echo grep'
+  echo 'alias'
+[704-END]

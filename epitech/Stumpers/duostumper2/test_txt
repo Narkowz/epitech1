@@ -1,0 +1,8 @@
+Congratulations, you succeeded in decrypting this message
+
+The real subject is to write a program to encrypt a file or string and write the result in a file nrmed 'crypt'.
+To encrypt a file we will use the '-f' parameter, for a string we will use '-s'.
+
+Since it is a crypted file, nobody should be able to modify its contents, that's why your program should set the read-only rights to the 'crypt' file.
+
+Usage: ./cesar -f filename key OR ./cesar -s "string" key

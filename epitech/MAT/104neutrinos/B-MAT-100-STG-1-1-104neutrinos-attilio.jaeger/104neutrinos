@@ -1,0 +1,68 @@
+#!/usr/bin/env python3
+import math
+import sys
+
+if len(sys.argv) > 5:
+    sys.exit(84)
+
+if len(sys.argv) < 2:
+    sys.exit(84)
+if sys.argv[1] == "-h":
+    print("USAGE")
+    print("    ./104neutrinos n a h sd")
+    print("")
+    print("DESCRIPTION")
+    print("    n      number of values")
+    print("    a      arithmetic mean")
+    print("    h      harmonic mean")
+    print("    sd     standard deviation")
+    sys.exit(0)
+
+recorded_value = sys.argv[1]
+arithmetic_mean = sys.argv[2] if len(sys.argv) == 5 else sys.exit(84)
+harmonic_mean = sys.argv[3] if len(sys.argv) == 5 else sys.exit(84)
+standard = sys.argv[4] if len(sys.argv) == 5 else sys.exit(84)
+
+if float(recorded_value) <= 0 or float(arithmetic_mean) <= 0 or float(harmonic_mean) <= 0 or float(standard) <= 0:
+    sys.exit(84)
+
+def mean_arithmetic(recorded_value, arithmetic_mean, new_value):
+    arithmetic_mean = float(arithmetic_mean) * float(recorded_value) + float(new_value)
+    arithmetic_mean = float(arithmetic_mean) / (float(recorded_value) + 1)
+    return arithmetic_mean
+
+def root_mean_func(arithmetic_mean, standard):
+    return math.sqrt((float(arithmetic_mean) ** 2) + (float(standard) ** 2))
+
+def mean_harmonic(recorded_value, harmonic_mean, new_value):
+    recorded_value = float(recorded_value)
+    new_value = float(new_value)
+    reciprocal_new = 1 / new_value    
+    harmonic_mean = (float(recorded_value) + 1) / ((float(recorded_value) / float(harmonic_mean)) + reciprocal_new)
+    return harmonic_mean
+
+def standard_mean(standard, new_value, recorded_value, arithmetic_mean):
+    nstandard = (float(recorded_value) - 1) * (float(standard) ** 2) + ((float(new_value) - float(arithmetic_mean)) ** 2)
+    nstandard = math.sqrt(nstandard / float(recorded_value))
+    return nstandard
+
+def main(recorded_value, arithmetic_mean, harmonic_mean, standard):
+    main_value = int(recorded_value)
+    new_value = input("Enter next value: ")
+    while new_value != "END":
+        main_value = main_value + 1
+        arithmetic_mean = mean_arithmetic(recorded_value, arithmetic_mean, new_value)
+        harmonic_mean = mean_harmonic(recorded_value, harmonic_mean, new_value)
+        standard = standard_mean(standard, new_value, recorded_value, arithmetic_mean)
+        root_mean_square = root_mean_func(arithmetic_mean, standard)
+        recorded_value = main_value
+        print("    Number of values:\t", main_value)
+        print("    Standard deviation:\t", round(standard, 2))
+        print("    Arithmetic mean:\t", round(arithmetic_mean, 2))
+        print("    Root mean square:\t", round(root_mean_square, 2))
+        print("    Harmonic mean:\t", round(harmonic_mean, 2))
+        print("")
+        new_value = input("Enter next value: ")
+
+if __name__ == "__main__":
+    main(recorded_value, arithmetic_mean, harmonic_mean, standard)

@@ -1,0 +1,55 @@
+name: tests_rpg
+
+on:
+  push:
+    branches: main
+
+jobs:
+
+  check_coding_style:
+    runs-on: ubuntu-latest
+    container: ghcr.io/epitech/coding-style-checker:latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run coding-style
+        run: check.sh . /tmp
+
+      - name: Create annotation for coding-style errors
+        run: |
+          input="/tmp/coding-style-reports.log"
+          while read -r line; do
+            IFS=':' read -r file line_num error_title error_message <<< "$line"
+            echo "::error title=$error_title coding style error,file=$file,line=$line_num::$error_message"
+          exit 1
+          done < "$input"
+
+  check_program_compilation:
+    needs: check_coding_style
+    runs-on: ubuntu-latest
+    container: epitechcontent/epitest-docker
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Launch make
+        run: make
+        timeout-minutes: 2
+
+      - name: Launch make fclean
+        run: make fclean
+
+      - name: Launch make re
+        run: make re
+        timeout-minutes: 2
+
+      - name: Launch make clean
+        run: make clean
+
+      - name: Verify executable
+        run: |
+          if [ ! -x "my_rpg" ]; then
+            echo "Error: my_rpg is either not found or not executable"
+            exit 1
+          fi

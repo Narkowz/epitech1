@@ -1,0 +1,47 @@
+
+int main(void)
+{
+    hashtable_t *ht = new_hashtable(&hash, 5);
+
+    ht_dump(ht);
+    ht_insert(ht, "Vision", "ViSion");
+    ht_insert(ht, "ag", "ag");
+    ht_insert(ht, "age", "age");
+    ht_insert(ht, "Visioen", "Visioen");
+    ht_insert(ht, "agd", "agd");
+    ht_insert(ht, "agedd", "agedd");
+    ht_insert(ht, "Visiond", "Visiond");
+    ht_insert(ht, "agds", "agds");
+    ht_insert(ht, "ageddd", "ageddd");
+    ht_insert(ht, "Visicon", "Visicon");
+    ht_insert(ht, "agqsx", "agqsx");
+    ht_insert(ht, "agesqd", "agesqd");
+    ht_insert(ht, "Visioqxcn", "Visioqxcn");
+    ht_insert(ht, "agqsx", "agqsx");
+    ht_insert(ht, "agefgre", "agefgre");
+    ht_insert(ht, "Visionqqdsx", "Visionqqdsx");
+    ht_insert(ht, "agezg", "agezg");
+    ht_insert(ht, "ageqsc", "ageqsc");
+    ht_insert(ht, "Visiondfezfzas", "Visiondfezfzas");
+    ht_insert(ht, "agaedads", "agaedads");
+    ht_insert(ht, "agefsdgregrt", "agefsdgregrt");
+    ht_dump(ht);
+    ht_delete(ht, "agqsx");
+    ht_delete(ht, "agefgre");
+    ht_delete(ht, "Visionqqdsx");
+    ht_delete(ht, "agezg");
+    ht_delete(ht, "ageqsc");
+    ht_delete(ht, "Visiondfezfzas");
+    ht_delete(ht, "agaedads");
+    ht_delete(ht, "agefsdgregrt");
+    ht_dump(ht);
+    ht_search(ht, "agedd");
+    ht_search(ht, "Visiond");
+    ht_search(ht, "agds");
+    delete_hashtable(ht);
+    // delete_hashtable(ht);
+    return 0;
+}
+
+
+@gcc -o $(NAME) -g -L. -lhashtable

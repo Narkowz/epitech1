@@ -1,0 +1,32 @@
+
+[1001]
+NAME="Basic globbing"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'echo src/builtin/*.c'
+[1001-END]
+
+[1002]
+NAME="Many globbing"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'echo src/builtin/*.c tester/tests_*'
+[1002-END]
+
+[1003]
+NAME="Hard globbing"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'echo src/builtin/*.c tester/tests_*n'
+[1003-END]
+
+[1004]
+NAME="? globbing"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'echo src/builtin/alias.?'
+[1004-END]

@@ -1,0 +1,14 @@
+name: Run Date Command on Commit
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run_date_command:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Run date command
+      run: echo "Current date and time $(date)"

@@ -1,0 +1,60 @@
+
+[901]
+NAME="test_ret"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'echo $?'
+[901-END]
+
+[902]
+NAME="test_pid"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'echo $$'
+[902-END]
+
+[903]
+NAME="test_var"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'echo $term'
+  echo 'echo $shell'
+  echo 'echo $home'
+  echo 'echo $dirstack'
+  echo 'echo $cwd'
+[903-END]
+
+[904]
+NAME="test_multi_echo"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'echo $? $$ $term $shell $home $dirstack $cwd'
+[904-END]
+
+[905]
+NAME="do_not_exist"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'echo $do_not_exist'
+[905-END]
+
+[906]
+NAME="null"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'echo'
+[906-END]
+
+[907]
+NAME="Invalid variable name"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'set ahsjksha*s = 10'
+[907-END]

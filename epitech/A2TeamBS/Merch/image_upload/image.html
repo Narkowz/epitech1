@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image</title>
+</head>
+<body>
+    <form action="image.php" method="post" enctype="multipart/form-data">
+        <label for="product_name">Product Name:</label>
+        <input type="text" name="product_name" id="product_name" required>
+        <label for="price">Price:</label>
+        <input type="text" name="price" id="price" required>
+        <label for="stock">Stock:</label>
+        <input type="text" name="stock" id="stock" required>
+        <label for="image">Select image to upload:</label>
+        <input type="file" name="image" id="image" required>
+        <input type="submit" value="Upload Image" name="submit">
+    </form>
+</body>
+</html>

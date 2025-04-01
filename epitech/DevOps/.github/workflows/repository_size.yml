@@ -1,0 +1,20 @@
+name: Repository Size Checker
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check_repository_size:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Display branch name
+      run: echo "Running on branch ${{ github.ref }}"
+
+    - name: Check repository size
+      run: du -skh --exclude=".git" .

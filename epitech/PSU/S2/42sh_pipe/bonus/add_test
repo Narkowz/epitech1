@@ -1,0 +1,68 @@
+#!/usr/bin/env python3
+##
+## EPITECH PROJECT, 2023
+## B-PSU-200-STG-2-1-42sh-titouan.pradoura
+## File description:
+## add_test.py
+##
+
+import os
+from sys import argv, exit
+
+def print_help() -> None:
+    print("USAGE:")
+    print("\t./add_test category name command1 command2 ....")
+
+def check_category(category: str) -> int:
+    list_cat = ["basic", "builtin", "redirection", "pipe", "parenthesis", "quote", "alias"]
+    for i in range(len(list_cat)):
+        if list_cat[i] == category:
+            return ((i + 1) * 100) + 1
+    print(f"Invalid category name, try with oen of those:\n {list_cat}")
+    exit(84)
+
+def get_path(command: str, category :str) -> str:
+    current_directory = os.getcwd()
+    list_path = current_directory.split("/")
+    filename = ""
+    if (list_path[-1] == "bonus"):
+        filename += "../"
+    filename += "tester/tests_" + category
+    return filename
+
+def parse_test_id(file_content: list, test_id :int) ->int:
+    for line in file_content:
+        if (str(test_id) in line):
+            return parse_test_id(file_content, test_id + 1)
+    return test_id
+
+def write_new_test(filename :str, command :list, name :str, test_id :int) -> None:
+    if os.path.exists(filename):
+        with open(filename, 'r') as file:
+            file_contents = file.readlines()
+            test_id = parse_test_id(file_contents, test_id)
+            print(test_id)
+    with open(filename, 'a') as file:
+        file.write(f"\n[{str(test_id)}]")
+        file.write(f"\nNAME=\"{name}\"\n")
+        file.write("SETUP=\"export TERM=xterm ; PATH='/bin:/usr/bin'\"\nCLEAN=\"\"\n")
+        file.write("TESTS=\n")
+        for test in command:
+            file.write(f"  echo '{test}'\n")
+        file.write(f"[{str(test_id)}-END]\n")
+
+def main() -> int:
+    if (len(argv) < 4 or argv[1] == "-h" or argv[1] == "--help"):
+        print_help()
+        exit(84)
+    command = []
+    category = argv[1]
+    name = argv[2]
+    for i in (range(3, len(argv))):
+        command.append(argv[i])
+    test_id = check_category(category)
+    filename = get_path(command, category)
+    write_new_test(filename, command, name, test_id)
+
+if __name__ =="__main__":
+    main()

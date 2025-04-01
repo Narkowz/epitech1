@@ -1,0 +1,117 @@
+/*
+** EPITECH PROJECT, 2024
+** lib
+** File description:
+** main
+*/
+
+#include "crocus.h"
+
+static void free_list(char **temp)
+{
+    for (int i = 0; temp[i] != NULL; i++)
+        free(temp[i]);
+    free(temp);
+}
+
+static void free_all(char *number, char *string, char **temp)
+{
+    if (number)
+        free(number);
+    if (string)
+        free(string);
+    free_list(temp);
+}
+
+static char *find_nb(char nb)
+{
+    if (nb == '0')
+        return ZERO;
+    if (nb == '1')
+        return ONE;
+    if (nb == '2')
+        return TWO;
+    if (nb == '3')
+        return THREE;
+    if (nb == '4')
+        return FOUR;
+    if (nb == '5')
+        return FIVE;
+    if (nb == '6')
+        return SIX;
+    if (nb == '7')
+        return SEVEN;
+    if (nb == '8')
+        return EIGHT;
+    if (nb == '9')
+        return NINE;
+}
+
+char *change_char(char *add, char *string, char nb)
+{
+    int nb_int = nb - '0';
+    char c;
+    char *tmp = malloc(sizeof(char) * (strlen(add) + 1));
+
+    tmp[strlen(add)] = '\0';
+    if (string == NULL)
+        return add;
+    c = string[nb_int % strlen(string)];
+    for (int i = 0; add[i] != '\0'; i++) {
+        if (add[i] == '0')
+            tmp[i] = c;
+        else
+            tmp[i] = add[i];
+    }
+    return tmp;
+}
+
+char **adding_to_line(char *add, char **result, char *string, char nb)
+{
+    char **temp = NULL;
+
+    add = change_char(add, string, nb);
+    temp = my_str_to_word_array(add, temp);
+    if (!result) {
+        result = my_str_to_word_array(add, result);
+        free_list(temp);
+        return result;
+    }
+    for (int i = 0; result != NULL && result[i] != NULL; i++)
+        add_word_to_string(result[i], temp[i], &result[i], " ");
+    free_list(temp);
+    return result;
+}
+
+void init_number_and_string(char **av, char **number, char **string)
+{
+    for (int i = 0; av[i] != NULL; i++) {
+        if (strcmp(av[i], "-n") == 0) {
+            *number = malloc(sizeof(char) * (strlen(av[i + 1]) + 1));
+            (*number)[strlen(av[i + 1])] = '\0';
+            *number = strcpy(*number, av[i + 1]);
+        }
+        if (strcmp(av[i], "-s") == 0) {
+            *string = malloc(sizeof(char) * (strlen(av[i + 1]) + 1));
+            (*string)[strlen(av[i + 1])] = '\0';
+            *string = strcpy(*string, av[i + 1]);
+        }
+    }
+}
+
+int main(int ac, char **av)
+{
+    char **res = NULL;
+    char *nb = NULL;
+    char *str = NULL;
+
+    if (handle_error(ac, av) == 84)
+        return 84;
+    init_number_and_string(av, &nb, &str);
+    for (int i = 0; nb[i] != '\0'; i++)
+        res = adding_to_line(find_nb(nb[i]), res, str, nb[i]);
+    for (int i = 0; res[i] != NULL; i++)
+        printf("%s\n", res[i]);
+    free_all(nb, str, res);
+    return 0;
+}

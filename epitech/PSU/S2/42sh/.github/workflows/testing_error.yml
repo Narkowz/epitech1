@@ -1,0 +1,127 @@
+name: Test Program Return Value when error
+
+on:
+  push:
+    branches:
+      - '*'
+
+# defaults:
+#   run:
+#     timeout-minutes: 3
+
+jobs:
+  test_no_room:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Build program
+      run: make
+      
+    - name: "ls -la; (ls)"
+      timeout-minutes: 2
+      run: |
+        ./script/test_return.sh "ls -la; (ls)" 0
+
+  test_wrong_par1:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Build program
+      run: make
+      
+    - name: "ls -la (ls)"
+      timeout-minutes: 2
+      run: |
+        ./script/test_return.sh "ls -la (ls)" 1
+
+  test_wrong_par2:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Build program
+      run: make
+      
+    - name: "ls -la; )()"
+      timeout-minutes: 2
+      run: |
+        ./script/test_return.sh "ls -la; )()" 1
+
+  test_wrong_par3:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Build program
+      run: make
+      
+    - name: "ls -la; ("
+      timeout-minutes: 2
+      run: |
+        ./script/test_return.sh "ls -la; (" 1
+
+  test_wrong_pipe:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Build program
+      run: make
+      
+    - name: "ls -la |"
+      timeout-minutes: 2
+      run: |
+        ./script/test_return.sh "ls -la |" 1
+
+  test_double_sep1:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Build program
+      run: make
+      
+    - name: "ls -la; > 23"
+      timeout-minutes: 2
+      run: |
+        ./script/test_return.sh "ls -la; > 23" 1
+
+  valid1:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Build program
+      run: make
+      
+    - name: "ls -la; ls > 23"
+      timeout-minutes: 2
+      run: |
+        ./script/test_return.sh "ls -la; ls > 23" 0
+
+  valid2:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Build program
+      run: make
+      
+    - name: "ls -la; ls > 23 ; (ls -la) | wc -l"
+      timeout-minutes: 2
+      run: |
+        ./script/test_return.sh "ls -la; ls > 23 ; (ls -la) | wc -l" 0

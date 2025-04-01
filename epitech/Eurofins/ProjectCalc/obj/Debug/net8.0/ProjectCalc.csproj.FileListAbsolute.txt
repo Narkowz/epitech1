@@ -1,0 +1,14 @@
+/home/attilio/delivery/Eurofins/ProjectCalc/bin/Debug/net8.0/ProjectCalc
+/home/attilio/delivery/Eurofins/ProjectCalc/bin/Debug/net8.0/ProjectCalc.deps.json
+/home/attilio/delivery/Eurofins/ProjectCalc/bin/Debug/net8.0/ProjectCalc.runtimeconfig.json
+/home/attilio/delivery/Eurofins/ProjectCalc/bin/Debug/net8.0/ProjectCalc.dll
+/home/attilio/delivery/Eurofins/ProjectCalc/bin/Debug/net8.0/ProjectCalc.pdb
+/home/attilio/delivery/Eurofins/ProjectCalc/obj/Debug/net8.0/ProjectCalc.GeneratedMSBuildEditorConfig.editorconfig
+/home/attilio/delivery/Eurofins/ProjectCalc/obj/Debug/net8.0/ProjectCalc.AssemblyInfoInputs.cache
+/home/attilio/delivery/Eurofins/ProjectCalc/obj/Debug/net8.0/ProjectCalc.AssemblyInfo.cs
+/home/attilio/delivery/Eurofins/ProjectCalc/obj/Debug/net8.0/ProjectCalc.csproj.CoreCompileInputs.cache
+/home/attilio/delivery/Eurofins/ProjectCalc/obj/Debug/net8.0/ProjectCalc.dll
+/home/attilio/delivery/Eurofins/ProjectCalc/obj/Debug/net8.0/refint/ProjectCalc.dll
+/home/attilio/delivery/Eurofins/ProjectCalc/obj/Debug/net8.0/ProjectCalc.pdb
+/home/attilio/delivery/Eurofins/ProjectCalc/obj/Debug/net8.0/ProjectCalc.genruntimeconfig.cache
+/home/attilio/delivery/Eurofins/ProjectCalc/obj/Debug/net8.0/ref/ProjectCalc.dll

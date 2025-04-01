@@ -1,0 +1,39 @@
+/*
+** EPITECH PROJECT, 2023
+** star.c
+** File description:
+** star
+*/
+
+void my_putchar(char c)
+{
+    write(1, &c, 1);
+}
+
+void star( unsigned int size)
+{
+    int i = 0;
+    int n = 0;
+    
+    for (; i < size; i++) {
+        my_putchar('*');
+        }
+    for (;n < (2*size)-3; i++) {
+            my_putchar(' ');
+    }
+        my_putchar('\n');
+}
+
+void top(int size, int *i)
+{
+    for (; i < size; (*i)++) {
+        my_putchar('*');
+        //my_putchar('\n');
+        }
+}
+
+void main()
+{
+    star(5);
+}
+//<3 <3 bbou <3 <3

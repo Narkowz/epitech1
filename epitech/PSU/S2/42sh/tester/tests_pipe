@@ -1,0 +1,195 @@
+[401]
+NAME="Testing simple pipe"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo "ls -l /etc | grep sh"
+[401-END]
+
+[402]
+NAME="A pipe with a builtin ?"
+SETUP="export VAR1=VALEUR1 ; OLDPATH=$PATH ; PATH='/random'"
+CLEAN="PATH=$OLDPATH"
+TESTS=
+  echo 'unsetenv HOSTTYPE'
+  echo 'unsetenv VENDOR'
+  echo 'unsetenv OSTYPE'
+  echo 'unsetenv MACHTYPE'
+  echo 'unsetenv SHLVL'
+  echo 'unsetenv PWD'
+  echo 'unsetenv LOGNAME'
+  echo 'unsetenv USER'
+  echo 'unsetenv GROUP'
+  echo 'unsetenv HOST'
+  echo 'unsetenv REMOTEHOST'
+  echo 'unsetenv NLSPATH'
+  echo 'unsetenv _'
+  echo 'unsetenv LS_COLORS'
+  echo 'unsetenv NOTE'
+  echo 'setenv titi'
+  echo 'setenv | /bin/grep VAR1'
+  echo '/bin/ls | cd /usr'
+  echo 'ls -l'
+  echo 'exit 45|cat /etc/resolv.conf'
+[402-END]
+
+[403]
+NAME="Invalid null pipe"
+SETUP="export VAR1=VALEUR1 ; OLDPATH=$PATH ; PATH='/random'"
+CLEAN="PATH=$OLDPATH"
+TESTS=
+  echo "|"
+  echo " | "
+  echo "ls | | wc"
+[403-END]
+
+[404]
+NAME="2 function with ; spaced"
+SETUP="export VAR1=VALEUR1 ; OLDPATH=$PATH ; PATH='/random'"
+CLEAN="PATH=$OLDPATH"
+TESTS=
+  echo 'pwd ; ls'
+[404-END]
+
+[405]
+NAME="2 function with ; half spaced"
+SETUP="export VAR1=VALEUR1 ; OLDPATH=$PATH ; PATH='/random'"
+CLEAN="PATH=$OLDPATH"
+TESTS=
+  echo 'pwd ;ls'
+[405-END]
+
+[406]
+NAME="2 function with ; other_half_spaced"
+SETUP="export VAR1=VALEUR1 ; OLDPATH=$PATH ; PATH='/random'"
+CLEAN="PATH=$OLDPATH"
+TESTS=
+  echo 'pwd; ls'
+[406-END]
+
+[407]
+NAME="2 function with ; not spaced"
+SETUP="export VAR1=VALEUR1 ; OLDPATH=$PATH ; PATH='/random'"
+CLEAN="PATH=$OLDPATH"
+TESTS=
+  echo 'pwd;ls'
+[407-END]
+
+[408]
+NAME="Basic pipe"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la | wc'
+[408-END]
+
+[409]
+NAME="Basic multi pipe"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la | wc | wc'
+[409-END]
+
+[410]
+NAME="Basic pipe with input"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'wc <Makefile | wc'
+[410-END]
+
+[411]
+NAME="Basic pipe with output"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls  | wc >result'
+  echo 'cat result'
+  echo 'rm result'
+[411-END]
+
+[412]
+NAME="Invalid null pipe"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls  |'
+[412-END]
+
+[413]
+NAME="Invalid null pipe2"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls  |;'
+[413-END]
+
+[414]
+NAME="Invalid null pipe3"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo '| ls;'
+[414-END]
+
+[415]
+NAME="Ambigous redirect 1"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la > result | wc'
+[415-END]
+
+[416]
+NAME="Ambigous redirect 2"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la >| wc'
+[416-END]
+
+[417]
+NAME="Ambigous input 1"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la|  wc<Makefile'
+[417-END]
+
+[418]
+NAME="Ambigous input 2"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la|<Makefile'
+[418-END]
+
+[419]
+NAME="Redirection after pipe"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la | cat -e > ff'
+  echo 'cat ff'
+  echo 'rm ff'
+[419-END]
+
+[420]
+NAME="Redirection after multi pipe"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la | cat -e | cat -e | cat -e > ff'
+  echo 'cat ff'
+  echo 'rm ff'
+[420-END]
+
+[421]
+NAME="Another Ambigous"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la | wc < Makefile'
+[421-END]
+

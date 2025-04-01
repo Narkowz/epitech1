@@ -1,0 +1,40 @@
+##
+## EPITECH PROJECT, 2023
+## Makefile
+## File description:
+## Makefile my_sokoban
+##
+
+SRC =   bs_my_sokoban2.c \
+		lib/my/my_strlen.c \
+
+OBJ =   $(SRC:.c=.o)
+
+NAME    =   libmy.a
+
+all:    $(NAME)
+
+$(NAME):
+	gcc -o my_popup -g $(SRC) -lncurses
+
+clean:
+	rm -f $(OBJ)
+
+fclean:	clean
+	rm -f $(NAME)
+	rm -f *.g*
+	rm -f my_popup
+	rm -f unit_tests
+	rm -f info_file
+
+re:	fclean all
+
+unit:
+	gcc $(UNI) -o unit_tests tests/unit_tests.c --coverage -lcriterion
+	./unit_tests
+
+cover:
+	gcovr --exclude tests
+
+branches:
+	gcovr --exclude tests --branches

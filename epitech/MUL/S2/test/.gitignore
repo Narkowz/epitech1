@@ -1,0 +1,7 @@
+*.log
+*.o
+my_rpg
+test
+.vscode
+.DS_Store
+.save

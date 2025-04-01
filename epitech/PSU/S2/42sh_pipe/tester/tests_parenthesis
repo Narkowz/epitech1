@@ -1,0 +1,57 @@
+
+[501]
+NAME="Basic parenthesis"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la; (ls)'
+[501-END]
+
+[502]
+NAME="ERROR parenthesis"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la (ls)'
+[502-END]
+
+[503]
+NAME="ERROR missmatched  parenthesis"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la ;)(ls)'
+[503-END]
+
+[504]
+NAME="ERROR missmatched  parenthesis2"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la ;)((ls)'
+[504-END]
+
+[505]
+NAME="ERROR missmatched  parenthesis3"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la; (ls'
+[505-END]
+
+[507]
+NAME="Paenthesis redirection"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo '(ls -la; ls) > file'
+  echo 'cat file'
+[507-END]
+
+[506]
+NAME="Paenthesis into par"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo '(ls -la; ls; (pwd; ls))'
+[506-END]

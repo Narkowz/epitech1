@@ -1,0 +1,22 @@
+name: Repository Mirroring
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  mirror_repository:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Mirror repository to Epitech
+      uses: pixta-dev/repository-mirroring-action@v1
+      with:
+        target_repo_url: git@github.com:EpitechPromo2028/B-DOP-200-STG-2-1-bschocolatine-attilio.jaeger.git
+        ssh_private_key: ${{ secrets.GIT_SSH_PRIVATE_KEY }}

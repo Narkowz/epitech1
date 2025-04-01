@@ -1,0 +1,56 @@
+
+[601]
+NAME="Missmatched quote"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la "/usr/bin'
+[601-END]
+
+[602]
+NAME="Good quote"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la "tester src"'
+[602-END]
+
+[603]
+NAME="Different quote"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'ls -la /usr/bin"'
+[603-END]
+
+[604]
+NAME="Echo big quote"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'echo " ls -la; pwd; cd ..; pwd > file"'
+[604-END]
+
+[605]
+NAME="Invalid command due to quote"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo '"ls -la"'
+[605-END]
+
+[606]
+NAME="Many quote in a row"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'echo "ls -la" "ls"'
+[606-END]
+
+[607]
+NAME="Many quote in a row and exe"
+SETUP="export TERM=xterm ; PATH='/bin:/usr/bin'"
+CLEAN=""
+TESTS=
+  echo 'echo "ls -la" "ls"; pwd'
+[607-END]

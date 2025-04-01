@@ -1,0 +1,9 @@
+*.o
+asm
+libmy.a
+*coding-style-reports.log
+.vscode
+*.cor
+B-CPE-200_binaries
+B-CPE-200_champions
+test.s

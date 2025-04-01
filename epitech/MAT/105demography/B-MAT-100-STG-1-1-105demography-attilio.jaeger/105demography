@@ -1,0 +1,145 @@
+#!/usr/bin/env python3
+import math
+import sys
+
+if len(sys.argv) < 2:
+    sys.exit(84)
+
+if len(sys.argv) == 2 and sys.argv[1] == "-h":
+    print("USAGE")
+    print("    ./105demography [code]+")
+    print("")
+    print("DESCRIPTION")
+    print("    code    country code")
+    sys.exit(0)
+
+file_path = '105demography_data.csv'
+values = []
+name = []
+
+def opening_file():
+    country_codes = set(sys.argv[1:])
+    t = [0 for i in country_codes]
+    with open(file_path, 'r') as file:
+        for line in file:
+            data = line.strip().split(';')
+            idx = 0
+            for codes in country_codes:
+                if data[1] == codes:
+                    for i, value in enumerate(data[2:]):
+                        if len(values) <= i:
+                            values.append(0)
+                        values[i] += int(value)
+                    name.append(data[0])
+                    t[idx] = 1
+                idx += 1
+    for i in t:
+        if i == 0:
+            sys.exit(84)
+
+def linear_regression():
+    years = list(range(1960, 2018))
+    population = values
+    n = len(years)
+    sum_x = sum(years)
+    sum_y = sum(population)
+    sum_xy = sum(x * y for x, y in zip(years, population))
+    sum_x_squared = sum(x ** 2 for x in years)
+    aX = (n * sum_xy - sum_x * sum_y) / (n * sum_x_squared - sum_x ** 2)
+    bX = (sum_y - aX * sum_x) / n
+    return aX, bX
+
+def root_mean_square(linear):
+    aX = linear[0]
+    bX = linear[1]
+    predict = [aX * years + bX for years in range(1960, 2018)]
+    sum_square = sum((pop - pred) ** 2 for pop, pred in zip(values, predict))
+    root_mean_square = math.sqrt(float(sum_square) / len(values))
+    return root_mean_square
+
+def prediction(linear):
+    aX = linear[0]
+    bX = linear[1]
+    prediction = aX * 2050 + bX
+    return prediction
+
+def first_lift():
+    country_names = name
+    opening_file()
+    print("Country:", end=" ")
+    print(", ".join(country_names))
+    print("Fit1")
+    linear = linear_regression()
+    if linear[1] < 0:
+        sign = '-'
+    else:
+        sign = '+'
+    print(f"    Y = {linear[0] / 1000000:.2f} X {sign} {abs(linear[1] / 1000000):.2f}")
+    root_mean = root_mean_square(linear)
+    print(f"    Root-mean-square deviation: {root_mean / 1000000:.2f}")
+    population1 = prediction(linear)
+    print(f"    Population in 2050: {population1 / 1000000:.2f}")
+    return population1
+
+def linear_regression2():
+    years = list(range(1960, 2018))
+    population = values
+    n = len(years)
+    sum_x = sum(years)
+    sum_y = sum(population)
+    sum_xy = sum(x * y for x, y in zip(years, population))
+    sum_y_squared = sum(y ** 2 for y in population)
+    aY = (n * sum_xy - sum_x * sum_y) / (n * sum_y_squared - sum_y ** 2)
+    mean_X = sum_x / len(years)
+    mean_Y = sum_y / len(population)
+    bY = mean_X - aY * mean_Y
+    return aY, bY
+
+def rms2(Y, linear):
+    aY = linear[0]
+    bY = linear[1]
+    predict = [(population - bY) / aY for population in range(1960, 2018)]
+    sum_square = sum((pop - pred) ** 2 for pop, pred in zip(Y, predict))
+    root_mean_square = math.sqrt(float(sum_square) / len(Y))
+    return root_mean_square
+
+def prediction2(linear):
+    aY = linear[0]
+    bY = linear[1]
+    prediction = (2050 - bY) / aY
+    return prediction
+
+def second_lift():
+    print("Fit2")
+    aY = linear_regression2()
+    if aY[1] < 0:
+        sign = '-'
+    else:
+        sign = '+'
+    print(f"    X = {aY[0] * 1000000:.2f} Y {sign} {aY[1]:.2f}")
+    root_mean = rms2(values, aY)
+    print(f"    Root-mean-square deviation: {root_mean / 1000000:.2f}")
+    population2 = prediction2(aY)
+    print(f"    Population in 2050: {population2 / 1000000:.2f}")
+    return population2
+
+
+def correlation_fun(population):
+    years = list(range(1960, 2018))
+    n = len(years)
+    sum_x = sum(years)
+    sum_y = sum(population)
+    sum_xy = sum(x * y for x, y in zip(years, population))
+    sum_x_squared = sum(x ** 2 for x in years)
+    sum_y_squared = sum(y ** 2 for y in population)
+    correlation = (n * sum_xy - sum_x * sum_y) / math.sqrt((n * sum_x_squared - sum_x ** 2) * (n * sum_y_squared - sum_y ** 2))
+    return correlation
+
+def main():
+    population1 = first_lift()
+    population2 = second_lift()
+    correlation = correlation_fun(values)
+    print(f"Correlation: {correlation:.4f}")
+
+if __name__ == "__main__":
+    main()
