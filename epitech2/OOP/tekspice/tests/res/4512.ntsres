@@ -1,0 +1,35 @@
+> > > > > > > > > tick: 2
+input(s):
+  enable: U
+  in_0: 0
+  in_1: U
+  in_2: U
+  in_3: 1
+  in_4: U
+  in_5: U
+  in_6: U
+  in_7: U
+  in_a: 1
+  in_b: 1
+  in_c: 0
+  inhibit: U
+output(s):
+  out_data: U
+> > > tick: 3
+input(s):
+  enable: U
+  in_0: 0
+  in_1: U
+  in_2: U
+  in_3: 1
+  in_4: U
+  in_5: U
+  in_6: U
+  in_7: U
+  in_a: 1
+  in_b: 0
+  in_c: 0
+  inhibit: U
+output(s):
+  out_data: U
+> 

@@ -1,0 +1,26 @@
+name: executing_tests
+
+on:
+  push:
+    branches: main
+
+jobs:
+
+  execute_makefile_tests:
+    runs-on: ubuntu-latest
+    container: epitechcontent/epitest-docker
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set TERM variable
+        run: echo "TERM=xterm" >> $GITHUB_ENV
+
+      - name: Launch make re
+        run: make re
+        timeout-minutes: 2
+
+      - name: Launch tests
+        run: make tests_all
+        timeout-minutes: 2
+

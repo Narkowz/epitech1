@@ -1,0 +1,11 @@
+*.o
+nanotekspice
+*.result
+
+build/
+.vscode/
+
+vgcore.*
+log.bin
+
+*.log

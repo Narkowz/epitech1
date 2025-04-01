@@ -1,0 +1,41 @@
+ID=001
+NAME="Test 4094"
+TESTFILE="files/4094_shift.nts"
+OUTPUTFILE="res/4094.ntsres"
+COMMANDFILE="cmd/4094.txt"
+
+ID=002
+NAME="Test 4512"
+TESTFILE="files/4512_selector.nts"
+OUTPUTFILE="res/4512.ntsres"
+COMMANDFILE="cmd/4512.txt"
+
+ID=003
+NAME="Test 4017"
+TESTFILE="files/4017_johnson.nts"
+OUTPUTFILE="res/4017.ntsres"
+COMMANDFILE="cmd/4017.txt"
+
+ID=004
+NAME="Test 4040"
+TESTFILE="files/4040_counter.nts"
+OUTPUTFILE="res/4040.ntsres"
+COMMANDFILE="cmd/4040.txt"
+
+ID=005
+NAME="Test 4514"
+TESTFILE="files/4514_decoder.nts"
+OUTPUTFILE="res/4514.ntsres"
+COMMANDFILE="cmd/4514.txt"
+
+ID=006
+NAME="Test 4013"
+TESTFILE="files/4013_flipflop.nts"
+OUTPUTFILE="res/4013.ntsres"
+COMMANDFILE="cmd/4013.txt"
+
+ID=007
+NAME="Test xor_not"
+TESTFILE="files/xor_not.nts"
+OUTPUTFILE="res/xor_not.ntsres"
+COMMANDFILE="cmd/xor_not.txt"

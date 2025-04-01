@@ -1,0 +1,19 @@
+name: wolfram
+version: 0.1.0.0
+github: "EpitechPromo2028/B-FUN-400-STG-4-1-wolfram-attilio.jaeger"
+license: BSD3
+author: "Attilio Jaeger"
+maintainer: "attilio.jaeger@epitech.eu"
+
+dependencies:
+  - base >=4.7 && <5
+
+executables:
+  wolfram:
+    main:                src/main.hs
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - base

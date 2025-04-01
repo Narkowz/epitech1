@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+
+##
+## EPITECH PROJECT, 2025
+## Game_Of_Stone
+## File description:
+## game_of_stones
+##
+
+from sys import argv
+from error_handling import error_handling, print_error
+from print_helper import print_helper
+from plots.plots import plots
+from links.links import links
+
+def create_tab_friend(friends_list):
+    perso = set()
+    for names in friends_list:
+        perso.add(names[0])
+        perso.add(names[1])
+    perso = sorted(list(perso))
+    n = len(perso)
+    tab_friend = [[0] * n for _ in range(n)]
+    for names in friends_list:
+        person1 = names[0]
+        person2 = names[1]
+        i = perso.index(person1)
+        j = perso.index(person2)
+        tab_friend[i][j] = 1
+        tab_friend[j][i] = 1
+    return tab_friend, perso
+
+def main():
+    if (len(argv) == 1 or len(argv) > 5):
+        print_error("Invalid number of arguments")
+        exit(84)
+    if argv[1] == "-h" or argv[1] == "--help":
+        print_helper()
+    error_handling()
+    if argv[1] == "--plots":
+        plots(argv[2], argv[3], int(argv[4]))
+    if argv[1] == "--links" and len(argv) == 5:
+        links(argv[2], argv[3], argv[4])
+
+if __name__ == "__main__":
+    main()

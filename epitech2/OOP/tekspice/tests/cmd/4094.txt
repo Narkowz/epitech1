@@ -1,0 +1,9 @@
+data = 1
+clock = 1
+display
+simulate
+display
+simulate
+data=0
+simulate
+display

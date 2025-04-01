@@ -1,0 +1,27 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.36.1.
+--
+-- see: https://github.com/sol/hpack
+
+name:           wolfram
+version:        0.1.0.0
+homepage:       https://github.com/EpitechPromo2028/B-FUN-400-STG-4-1-wolfram-attilio.jaeger#readme
+bug-reports:    https://github.com/EpitechPromo2028/B-FUN-400-STG-4-1-wolfram-attilio.jaeger/issues
+author:         Attilio Jaeger
+maintainer:     attilio.jaeger@epitech.eu
+license:        BSD3
+build-type:     Simple
+
+source-repository head
+  type: git
+  location: https://github.com/EpitechPromo2028/B-FUN-400-STG-4-1-wolfram-attilio.jaeger
+
+executable wolfram
+  main-is: src/main.hs
+  other-modules:
+      Paths_wolfram
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base
+  default-language: Haskell2010

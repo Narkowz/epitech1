@@ -1,0 +1,71 @@
+name: Test Program Return Value when error
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test_not_nts:
+    runs-on: ubuntu-latest
+    container: epitechcontent/epitest-docker
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Build program
+      run: make
+      timeout-minutes: 2
+      
+    - name: Run program invalid file extension
+      run: |
+        ./tests/check_return_value.sh tests/files/invalidname.ys 84
+        
+  test_invalid_file:
+    runs-on: ubuntu-latest
+    container: epitechcontent/epitest-docker
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Build program
+      run: make
+      timeout-minutes: 2
+      
+    - name: Run program invalid file 
+      run: |
+        ./tests/check_return_value.sh hahjsjs.txt 84
+
+  test_multiple_names:
+    runs-on: ubuntu-latest
+    container: epitechcontent/epitest-docker
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Build program
+      run: make
+      timeout-minutes: 2
+      
+    - name: Run program invalid file
+      run: |
+        ./tests/check_return_value.sh tests/files/multiple_chipsetname.nts 84
+
+  test_invalid_type:
+    runs-on: ubuntu-latest
+    container: epitechcontent/epitest-docker
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Build program
+      run: make
+      timeout-minutes: 2
+      
+    - name: Run program invalid file
+      run: |
+        ./tests/check_return_value.sh tests/files/invalid_chipsettype.nts 84

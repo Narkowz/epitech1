@@ -1,0 +1,29 @@
+USAGE:
+    ./arcade <graphical_lib>
+
+DESCRIPTION:
+    Launches the Arcade application with the specified graphical library.
+
+PARAMETERS:
+    <graphical_lib>  
+        The path to the .so file of the graphical library to use.
+
+DIRECTORIES:
+    ./lib/games/  
+        Contains all available game libraries.
+    
+    ./lib/graphical/  
+        Contains all available graphical libraries.
+
+CONTROLS:
+    Arrow Keys     Navigate through menus and in-game controls.  
+    Tab            Switch between graphical libraries.  
+    Escape         Return to the game selection menu.  
+
+OPTIONS:
+    -h, --help  
+        Display this help message and exit.
+
+EXAMPLES:
+    ./arcade ./lib/graphical/arcade_sdl2.s
+    ./arcade ./lib/graphical/arcade_ncurses.s 

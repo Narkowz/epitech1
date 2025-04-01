@@ -1,0 +1,21 @@
+# Build files
+build/
+*.o
+
+# VS Code
+.vscode/
+
+# Debug files
+vgcore.*
+log.bin
+*.log
+
+#Executable
+arcade
+
+#Libraries
+*.so
+
+#Txt file
+file.txt
+bin

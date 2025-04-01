@@ -1,0 +1,5 @@
+.vscode
+a.out
+test_main.c
+libstring.a
+*.log

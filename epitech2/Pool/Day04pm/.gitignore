@@ -1,0 +1,6 @@
+main*.c
+*.c
+a.out
+vgcore*
+tmp/
+.vscode/

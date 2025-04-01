@@ -1,0 +1,35 @@
+ID=001
+NAME="Test TrueComponent"
+TESTFILE="files/true.nts"
+OUTPUTFILE="res/true.ntsres"
+COMMANDFILE="cmd/true.txt"
+
+ID=002
+NAME="Test FalseComponent"
+TESTFILE="files/false.nts"
+OUTPUTFILE="res/false.ntsres"
+COMMANDFILE="cmd/false.txt"
+
+ID=003
+NAME="Test NotComponent"
+TESTFILE="files/not.nts"
+OUTPUTFILE="res/not.ntsres"
+COMMANDFILE="cmd/not.txt"
+
+ID=004
+NAME="Test OrComponent"
+TESTFILE="files/or.nts"
+OUTPUTFILE="res/or.ntsres"
+COMMANDFILE="cmd/or.txt"
+
+ID=005
+NAME="Test XorComponent"
+TESTFILE="files/xor.nts"
+OUTPUTFILE="res/xor.ntsres"
+COMMANDFILE="cmd/xor.txt"
+
+ID=006
+NAME="Test AndComponent"
+TESTFILE="files/and.nts"
+OUTPUTFILE="res/and.ntsres"
+COMMANDFILE="cmd/and.txt"
